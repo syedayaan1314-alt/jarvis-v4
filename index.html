@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#050b19">
+  <meta name="description" content="JARVIS holographic personal AI interface">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <title>J.A.R.V.I.S. — Personal AI</title>
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <header class="topbar">
+    <button class="brand" data-screen="home" aria-label="Go to home"><span class="brand-mark">J</span><span><b>J.A.R.V.I.S.</b><small>PERSONAL AI SYSTEM</small></span></button>
+    <div class="top-status"><span class="live-dot"></span><span id="systemStatus">SYSTEM ONLINE</span><span class="top-divider"></span><button class="icon-button" id="settingsTop" aria-label="Settings">⚙</button></div>
+  </header>
+
+  <main>
+    <section class="screen active" id="screen-lock">
+      <div class="lock-layout">
+        <div class="lock-emblem"><div class="emblem-ring ring-one"></div><div class="emblem-ring ring-two"></div><div class="emblem-ring ring-three"></div><div class="emblem-core">J</div><span class="orbit-dot"></span></div>
+        <p class="eyebrow">SECURE ACCESS PROTOCOL</p><h1 id="lockTitle">Welcome back, Sir.</h1><p class="muted" id="lockHint">Enter your access code to initialize JARVIS.</p>
+        <div class="pin-dots" id="pinDots" aria-label="PIN digits"><i></i><i></i><i></i><i></i></div>
+        <div class="keypad" id="keypad">
+          <button data-key="1">1<small>•</small></button><button data-key="2">2<small>ABC</small></button><button data-key="3">3<small>DEF</small></button>
+          <button data-key="4">4<small>GHI</small></button><button data-key="5">5<small>JKL</small></button><button data-key="6">6<small>MNO</small></button>
+          <button data-key="7">7<small>PQRS</small></button><button data-key="8">8<small>TUV</small></button><button data-key="9">9<small>WXYZ</small></button>
+          <button class="key-secondary" data-key="clear">CLR</button><button data-key="0">0<small>+</small></button><button class="key-enter" data-key="enter" aria-label="Submit PIN">↵</button>
+        </div>
+        <p class="micro" id="lockFoot">FIRST VISIT? SET A 4-DIGIT ACCESS CODE</p>
+        <button class="text-button" id="resetPin">Reset local access code</button>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-home">
+      <div class="welcome-row"><div><p class="eyebrow">PERSONAL ASSISTANT / ONLINE</p><h1>Good to see you, <span class="cyan">Sir.</span></h1><p class="muted">Your systems are ready. What shall we do today?</p></div><div class="mini-clock"><span id="clock">--:--</span><small id="dateLine">INITIALIZING</small></div></div>
+      <div class="hero-panel">
+        <div class="hero-copy"><span class="pill"><span class="live-dot"></span> JARVIS CORE ACTIVE</span><h2>Your command.<br><span class="cyan">My priority.</span></h2><p>Ask a question, speak a command, or launch a tool.</p><div class="hero-actions"><button class="primary-button" data-screen="chat">Start conversation <span>↗</span></button><button class="outline-button" data-screen="voice">◉ Voice mode</button></div></div>
+        <div class="reactor-wrap"><div class="reactor-halo"></div><div class="reactor-ring rr1"></div><div class="reactor-ring rr2"></div><div class="reactor-ring rr3"></div><div class="reactor-core"><div class="core-star">✦</div></div><div class="reactor-scan"></div></div>
+        <div class="hero-code">CORE // 01<br>NEURAL LINK: STABLE<br>ENCRYPTION: ACTIVE</div>
+      </div>
+      <div class="section-heading"><div><p class="eyebrow">COMMAND CENTRE</p><h2>Quick access</h2></div><span class="muted tiny">YOUR WORKSPACE</span></div>
+      <div class="quick-grid">
+        <button class="quick-card" data-screen="chat"><span class="quick-icon">⌘</span><b>AI Assistant</b><small>Ask anything</small><span class="card-arrow">↗</span></button>
+        <button class="quick-card" data-screen="voice"><span class="quick-icon">◉</span><b>Voice control</b><small>Talk to JARVIS</small><span class="card-arrow">↗</span></button>
+        <a class="quick-card" href="https://www.youtube.com/" target="_blank" rel="noreferrer"><span class="quick-icon">▷</span><b>YouTube</b><small>Open in browser</small><span class="card-arrow">↗</span></a>
+        <a class="quick-card" href="https://mail.google.com/" target="_blank" rel="noreferrer"><span class="quick-icon">✉</span><b>Gmail</b><small>Open in browser</small><span class="card-arrow">↗</span></a>
+      </div>
+      <div class="status-strip"><div><span class="status-icon">◈</span><span><b>AI connection</b><small>Server endpoint configured</small></span></div><span class="status-value" id="apiStatus">READY TO CONNECT</span></div>
+    </section>
+
+    <section class="screen" id="screen-chat">
+      <div class="page-heading"><button class="back-button" data-screen="home">←</button><div><p class="eyebrow">NEURAL INTERFACE</p><h1>AI Assistant</h1></div><span class="pill small-pill"><span class="live-dot"></span> ONLINE</span></div>
+      <div class="chat-shell">
+        <div class="chat-top"><div class="assistant-avatar">J</div><div><b>JARVIS</b><small>Personal AI • Ready to assist</small></div><button id="clearChat" class="icon-button" title="Clear chat">↺</button></div>
+        <div class="chat-messages" id="messages"><div class="message assistant-message"><span class="message-label">JARVIS</span><p>At your service, Sir. What can I help you with?</p></div></div>
+        <div class="suggestions"><button data-prompt="Help me plan my day">Plan my day</button><button data-prompt="Explain a difficult topic simply">Explain a topic</button><button data-prompt="Give me an idea for a coding project">Coding ideas</button></div>
+        <form id="chatForm" class="chat-form"><textarea id="chatInput" rows="1" placeholder="Send a message to JARVIS…" aria-label="Message" required></textarea><button class="send-button" type="submit" aria-label="Send message">➤</button></form>
+        <p class="micro chat-note">AI responses can be inaccurate. Check important information.</p>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-voice">
+      <div class="page-heading"><button class="back-button" data-screen="home">←</button><div><p class="eyebrow">AUDIO INTERFACE</p><h1>Voice mode</h1></div></div>
+      <div class="voice-panel"><p class="eyebrow">VOICE LINK / STANDBY</p><div class="voice-orb" id="voiceOrb"><div class="voice-orb-inner">J</div><span class="voice-wave wave-a"></span><span class="voice-wave wave-b"></span></div><h2 id="voiceTitle">Ready when you are.</h2><p class="muted" id="voiceHint">Tap the microphone and speak naturally.</p><button class="primary-button mic-button" id="micButton"><span>🎙</span> Start listening</button><div class="voice-transcript" id="voiceTranscript">Your spoken request will appear here.</div><button class="outline-button" data-screen="chat">Type instead</button></div>
+      <p class="micro centered">Voice recognition depends on browser and device support. Microphone permission may be required.</p>
+    </section>
+
+    <section class="screen" id="screen-tools">
+      <div class="page-heading"><button class="back-button" data-screen="home">←</button><div><p class="eyebrow">SYSTEM MODULES</p><h1>Tools & shortcuts</h1></div></div>
+      <div class="tool-list">
+        <a class="tool-row" href="https://www.google.com/" target="_blank" rel="noreferrer"><span class="tool-icon">⌕</span><span><b>Web search</b><small>Search the web in a new tab</small></span><span>↗</span></a>
+        <a class="tool-row" href="https://www.youtube.com/" target="_blank" rel="noreferrer"><span class="tool-icon">▷</span><span><b>YouTube</b><small>Open video platform</small></span><span>↗</span></a>
+        <a class="tool-row" href="https://mail.google.com/" target="_blank" rel="noreferrer"><span class="tool-icon">✉</span><span><b>Gmail</b><small>Open your mail in a new tab</small></span><span>↗</span></a>
+        <button class="tool-row" data-screen="chat"><span class="tool-icon">⌘</span><span><b>Ask JARVIS</b><small>Use the AI chat assistant</small></span><span>↗</span></button>
+        <button class="tool-row" data-screen="voice"><span class="tool-icon">◉</span><span><b>Voice control</b><small>Speak a request</small></span><span>↗</span></button>
+      </div>
+      <p class="notice">These are browser shortcuts. They do not directly control your phone or access your personal accounts.</p>
+    </section>
+
+    <section class="screen" id="screen-settings">
+      <div class="page-heading"><button class="back-button" data-screen="home">←</button><div><p class="eyebrow">CONFIGURATION</p><h1>Settings</h1></div></div>
+      <div class="settings-card"><div class="setting-row"><span><b>Spoken AI replies</b><small>Read assistant responses aloud</small></span><label class="switch"><input type="checkbox" id="speechToggle" checked><span></span></label></div><div class="setting-row"><span><b>Reduce animations</b><small>Use fewer motion effects</small></span><label class="switch"><input type="checkbox" id="motionToggle"><span></span></label></div><div class="setting-row"><span><b>Interface</b><small>JARVIS holographic blue theme</small></span><span class="setting-value">ACTIVE</span></div><button class="outline-button full-button" id="lockNow">Lock JARVIS now</button></div>
+      <p class="notice">The PIN is a convenience lock stored in this browser only. It is not strong account security and does not protect your server/API key.</p>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Main navigation"><button class="nav-item selected" data-screen="home"><span>⌂</span><small>Home</small></button><button class="nav-item" data-screen="chat"><span>⌘</span><small>Assistant</small></button><button class="nav-item" data-screen="voice"><span>◉</span><small>Voice</small></button><button class="nav-item" data-screen="tools"><span>▦</span><small>Tools</small></button></nav>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="/app.js"></script>
+</body></html>

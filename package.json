@@ -1,0 +1,7 @@
+{
+  "name": "jarvis-hologram-ui",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Mobile-first holographic JARVIS personal AI interface for Vercel"
+}
